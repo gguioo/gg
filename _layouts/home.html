@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<h1 class="visually-hidden">{{ site.title }} · 最新文章</h1>
+<nav class="top-cats">
+  {%- for era in site.eras -%}{%- if site.categories[era] %}<a href="{{ '/categories/' | relative_url }}#{{ era }}">{{ era }}</a>{% endif -%}{%- endfor %}
+</nav>
+<ol class="items">
+  {%- for post in site.posts -%}{% include item.html post=post n=forloop.index %}{%- endfor -%}
+</ol>

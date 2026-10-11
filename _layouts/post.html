@@ -2,21 +2,16 @@
 layout: default
 ---
 {%- assign chars = content | strip_html | strip_newlines | size -%}
-{%- assign mins = chars | divided_by: 400 | plus: 1 -%}
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%Y年%-m月%-d日" }}</time>
-      {%- for c in page.categories %} · {{ c }}{% endfor %}
-      · 约 {{ chars }} 字 · 阅读约 {{ mins }} 分钟
-    </p>
-  </header>
-  <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
+<article class="article">
+  <h1 class="page-title">{{ page.title }}</h1>
+  <div class="meta post-meta">
+    {%- for c in page.categories %}<a class="who" href="{{ '/categories/' | relative_url }}#{{ c }}">{{ c }}</a>{% endfor %}
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+    <span>约 {{ chars }} 字 · 阅读约 {{ chars | divided_by: 400 | plus: 1 }} 分钟</span>
   </div>
-  <hr>
-  {%- if page.previous %}<p>← 上一篇：<a href="{{ page.previous.url | relative_url }}">{{ page.previous.title }}</a></p>{% endif %}
-  {%- if page.next %}<p>下一篇 →：<a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a></p>{% endif %}
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+  <div class="prose">{{ content }}</div>
+  <nav class="pager">
+    {%- if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>{% else %}<span></span>{% endif -%}
+    {%- if page.next %}<a class="next" href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>{% else %}<span></span>{% endif -%}
+  </nav>
 </article>

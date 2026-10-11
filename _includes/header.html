@@ -1,0 +1,11 @@
+<header class="top">
+  <a class="brand" href="{{ '/' | relative_url }}">南洋往事</a>
+  <nav class="tabs" aria-label="主导航">
+    {%- assign p = page.url -%}
+    <a href="{{ '/' | relative_url }}"{% if p == '/' %} aria-current="page"{% endif %}>最新</a>
+    <a href="{{ '/categories/' | relative_url }}"{% if p == '/categories/' %} aria-current="page"{% endif %}>分类<span class="count">{{ site.posts | size }}</span></a>
+    <a href="{{ '/timeline/' | relative_url }}"{% if p == '/timeline/' %} aria-current="page"{% endif %}>大事年表</a>
+    <a href="{{ '/about/' | relative_url }}"{% if p == '/about/' %} aria-current="page"{% endif %}>关于</a>
+  </nav>
+  <div class="account"><a href="{{ '/feed.xml' | relative_url }}">RSS</a></div>
+</header>

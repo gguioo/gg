@@ -1,0 +1,13 @@
+<aside class="side">
+  <h2>统计</h2>
+  <p class="stats">文章 <b>{{ site.posts | size }}</b> 篇<br>时代 <b>{{ site.eras | size }}</b> 个</p>
+  <h2>按时代</h2>
+  <nav class="side-cats">
+    {%- for era in site.eras -%}
+      {%- assign n = site.categories[era] | size -%}
+      {%- if n > 0 %}<a href="{{ '/categories/' | relative_url }}#{{ era }}">{{ era }} <span class="faint">{{ n }}</span></a>{% endif -%}
+    {%- endfor %}
+  </nav>
+  <p class="side-links"><a href="{{ '/timeline/' | relative_url }}">大事年表</a><br><a href="{{ '/feed.xml' | relative_url }}">RSS 订阅</a></p>
+  <p class="about">{{ site.description }}</p>
+</aside>

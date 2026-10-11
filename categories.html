@@ -1,0 +1,13 @@
+---
+layout: default
+title: 分类
+permalink: /categories/
+---
+<h1 class="page-title">按时代分类</h1>
+{%- for era in site.eras -%}
+  {%- assign posts = site.categories[era] -%}
+  {%- if posts %}
+  <h2 class="section-title" id="{{ era }}">{{ era }} <span class="count">{{ posts | size }}</span></h2>
+  <ol class="items">{%- assign rev = posts | reverse -%}{%- for post in rev -%}{% include item.html post=post n=forloop.index %}{%- endfor -%}</ol>
+  {%- endif -%}
+{%- endfor %}

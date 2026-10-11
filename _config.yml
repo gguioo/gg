@@ -1,17 +1,13 @@
-title: 南洋往事 · 东南亚历史札记
-description: 从扶南、吴哥到马六甲与东盟，用一篇篇短文讲清东南亚两千年的来龙去脉。
+title: 南洋往事
+description: 东南亚历史札记。从扶南、吴哥到马六甲与东盟，用一篇篇短文讲清东南亚两千年的来龙去脉。
 url: "https://gguioo.github.io"
-baseurl: "/gg"
+baseurl: ""
 lang: zh-CN
-theme: minima
 timezone: Asia/Shanghai
-minima:
-  date_format: "%Y年%-m月%-d日"
-header_pages:
-  - about.md
-  - timeline.md
+permalink: /posts/:title/
+eras: [古代, 中古, 近世, 近代, 现代]
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-show_excerpts: true
-permalink: /posts/:title/
+  - jekyll-sitemap
+exclude: [Gemfile, Gemfile.lock, README.md]

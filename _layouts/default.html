@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{%- seo -%}
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12151b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+{%- feed_meta -%}
+</head>
+<body>
+<div class="wrap">
+  {% include header.html %}
+  <div class="page">
+    <main>
+      {{ content }}
+    </main>
+    {% include sidebar.html %}
+  </div>
+  <footer class="foot">© {{ site.time | date: "%Y" }} 南洋往事 · 东南亚历史札记</footer>
+</div>
+</body>
+</html>
