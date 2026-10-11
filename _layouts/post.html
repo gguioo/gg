@@ -8,16 +8,15 @@ layout: default
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     <p class="post-meta">
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%Y年%-m月%-d日" }}</time>
-      {%- for c in page.categories %} <span class="cat-chip">{{ c }}</span>{% endfor %}
+      {%- for c in page.categories %} · {{ c }}{% endfor %}
       · 约 {{ chars }} 字 · 阅读约 {{ mins }} 分钟
     </p>
   </header>
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
-  <nav class="post-nav">
-    {%- if page.previous -%}<a class="prev" href="{{ page.previous.url | relative_url }}"><small>← 上一篇</small>{{ page.previous.title }}</a>{%- else -%}<span></span>{%- endif -%}
-    {%- if page.next -%}<a class="next" href="{{ page.next.url | relative_url }}"><small>下一篇 →</small>{{ page.next.title }}</a>{%- else -%}<span></span>{%- endif -%}
-  </nav>
+  <hr>
+  {%- if page.previous %}<p>← 上一篇：<a href="{{ page.previous.url | relative_url }}">{{ page.previous.title }}</a></p>{% endif %}
+  {%- if page.next %}<p>下一篇 →：<a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a></p>{% endif %}
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
