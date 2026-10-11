@@ -575,3 +575,35 @@ main {
 .section-title:first-of-type { margin-top: 22px; }
 .crumb { margin-top: 22px; }
 .crumb + .page-title { margin-top: 6px; }
+
+/* 右上角玻璃菜单 */
+.top { align-items: center; position: relative; }
+.menu { margin-left: auto; position: relative; }
+.glass-btn {
+  width: 40px; height: 40px; border-radius: 999px; cursor: pointer;
+  display: grid; place-items: center; padding: 0;
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  box-shadow: 0 4px 16px rgba(0,0,0,.08), inset 0 1px 0 rgba(255,255,255,.6);
+  -webkit-backdrop-filter: blur(14px) saturate(160%); backdrop-filter: blur(14px) saturate(160%);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.glass-btn:hover { box-shadow: 0 6px 20px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.6); }
+.glass-btn:active { transform: scale(.95); }
+.bars { display: grid; gap: 4px; width: 16px; }
+.bars i { display: block; height: 1.5px; background: var(--fg); border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
+.glass-btn.open .bars i:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.glass-btn.open .bars i:nth-child(2) { opacity: 0; }
+.glass-btn.open .bars i:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+.glass-menu {
+  position: absolute; right: 0; top: calc(100% + 10px); z-index: 20; min-width: 150px;
+  display: flex; flex-direction: column; padding: 6px; border-radius: 14px;
+  background: color-mix(in srgb, var(--bg) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  box-shadow: 0 12px 32px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.5);
+  -webkit-backdrop-filter: blur(18px) saturate(160%); backdrop-filter: blur(18px) saturate(160%);
+}
+.glass-menu[hidden] { display: none; }
+.glass-menu a { padding: 9px 12px; border-radius: 9px; text-decoration: none; color: var(--fg); font-size: 0.95rem; }
+.glass-menu a:hover { background: color-mix(in srgb, var(--fg) 7%, transparent); }
+.glass-menu a[aria-current="page"] { font-weight: 600; }

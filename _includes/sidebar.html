@@ -6,6 +6,6 @@
   <nav class="side-cats">
     {%- for c in site.data.toc %}<a href="{{ '/' | relative_url }}#c{{ c.n }}">{{ c.label }} {{ c.title }}</a>{% endfor %}
   </nav>
-  <p class="side-links"><a href="{{ '/timeline/' | relative_url }}">大事年表</a><br><a href="{{ '/feed.xml' | relative_url }}">RSS 订阅</a></p>
+
   <p class="about">{{ site.description }}</p>
 </aside>

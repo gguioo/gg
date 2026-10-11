@@ -1,10 +1,23 @@
 <header class="top">
   <a class="brand" href="{{ '/' | relative_url }}">南洋往事</a>
-  <nav class="tabs" aria-label="主导航">
-    {%- assign p = page.url -%}
-    <a href="{{ '/' | relative_url }}"{% if p == '/' %} aria-current="page"{% endif %}>目录<span class="count">{{ site.posts | size }}</span></a>
-    <a href="{{ '/timeline/' | relative_url }}"{% if p == '/timeline/' %} aria-current="page"{% endif %}>大事年表</a>
-    <a href="{{ '/about/' | relative_url }}"{% if p == '/about/' %} aria-current="page"{% endif %}>关于</a>
-  </nav>
-  <div class="account"><a href="{{ '/feed.xml' | relative_url }}">RSS</a></div>
+  {%- assign p = page.url -%}
+  <div class="menu">
+    <button class="glass-btn" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="打开菜单">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+    <nav class="glass-menu" id="site-menu" aria-label="主导航" hidden>
+      <a href="{{ '/' | relative_url }}"{% if p == '/' %} aria-current="page"{% endif %}>目录</a>
+      <a href="{{ '/timeline/' | relative_url }}"{% if p == '/timeline/' %} aria-current="page"{% endif %}>大事年表</a>
+      <a href="{{ '/about/' | relative_url }}"{% if p == '/about/' %} aria-current="page"{% endif %}>关于</a>
+    </nav>
+  </div>
 </header>
+<script>
+(function(){
+  var b=document.querySelector('.glass-btn'),m=document.getElementById('site-menu');
+  function set(o){b.setAttribute('aria-expanded',o);m.hidden=!o;b.classList.toggle('open',o);}
+  b.addEventListener('click',function(e){e.stopPropagation();set(m.hidden);});
+  document.addEventListener('click',function(e){if(!m.contains(e.target))set(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false);});
+})();
+</script>
