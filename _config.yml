@@ -14,3 +14,4 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 show_excerpts: true
+permalink: /posts/:title/
