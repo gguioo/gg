@@ -6,7 +6,7 @@ lang: zh-CN
 theme: minima
 timezone: Asia/Shanghai
 minima:
-  skin: classic
+  date_format: "%Y年%-m月%-d日"
 header_pages:
   - about.md
   - timeline.md
