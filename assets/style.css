@@ -607,3 +607,9 @@ main {
 .glass-menu a { padding: 9px 12px; border-radius: 9px; text-decoration: none; color: var(--fg); font-size: 0.95rem; }
 .glass-menu a:hover { background: color-mix(in srgb, var(--fg) 7%, transparent); }
 .glass-menu a[aria-current="page"] { font-weight: 600; }
+
+/* 无导航栏：只保留右上角悬浮圆形玻璃按钮 */
+.float-menu { position: fixed; top: max(14px, env(safe-area-inset-top)); right: 16px; z-index: 50; }
+.float-menu .menu { margin-left: 0; }
+.float-menu .glass-btn { width: 44px; height: 44px; }
+.page > main > :first-child, .page > main > .visually-hidden + * { margin-top: 28px; }
