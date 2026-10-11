@@ -2,16 +2,26 @@
 layout: default
 ---
 {%- assign chars = content | strip_html | strip_newlines | size -%}
+{%- assign flat = "" | split: "" -%}{%- assign chap = nil -%}{%- assign sec = nil -%}
+{%- for c in site.data.toc -%}{%- for s in c.sections -%}
+  {%- assign p = site.posts | where: "key", s.key | first -%}
+  {%- if p -%}{%- assign flat = flat | push: s.key -%}{%- endif -%}
+  {%- if s.key == page.key -%}{%- assign chap = c -%}{%- assign sec = s -%}{%- endif -%}
+{%- endfor -%}{%- endfor -%}
+{%- assign prev_key = nil -%}{%- assign next_key = nil -%}
+{%- for k in flat -%}
+  {%- if k == page.key -%}{%- assign i = forloop.index0 -%}
+    {%- if i > 0 -%}{%- assign pi = i | minus: 1 -%}{%- assign prev_key = flat[pi] -%}{%- endif -%}
+    {%- assign ni = i | plus: 1 -%}{%- assign next_key = flat[ni] -%}
+  {%- endif -%}
+{%- endfor -%}
 <article class="article">
-  <h1 class="page-title">{{ page.title }}</h1>
-  <div class="meta post-meta">
-    {%- for c in page.categories %}<a class="who" href="{{ '/categories/' | relative_url }}#{{ c }}">{{ c }}</a>{% endfor %}
-    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
-    <span>约 {{ chars }} 字 · 阅读约 {{ chars | divided_by: 400 | plus: 1 }} 分钟</span>
-  </div>
+  <div class="meta crumb"><a href="{{ '/' | relative_url }}#c{{ chap.n }}">{{ chap.label }} {{ chap.title }}</a></div>
+  <h1 class="page-title">{% if sec %}{{ sec.label }} {% endif %}{{ page.title }}</h1>
+  <div class="meta post-meta"><span>约 {{ chars }} 字</span><span>阅读约 {{ chars | divided_by: 400 | plus: 1 }} 分钟</span></div>
   <div class="prose">{{ content }}</div>
   <nav class="pager">
-    {%- if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title }}</a>{% else %}<span></span>{% endif -%}
-    {%- if page.next %}<a class="next" href="{{ page.next.url | relative_url }}">{{ page.next.title }} →</a>{% else %}<span></span>{% endif -%}
+    {%- if prev_key -%}{%- assign pp = site.posts | where: "key", prev_key | first -%}<a href="{{ pp.url | relative_url }}">← {{ pp.title }}</a>{%- else -%}<span></span>{%- endif -%}
+    {%- if next_key -%}{%- assign np = site.posts | where: "key", next_key | first -%}<a class="next" href="{{ np.url | relative_url }}">{{ np.title }} →</a>{%- else -%}<span></span>{%- endif -%}
   </nav>
 </article>

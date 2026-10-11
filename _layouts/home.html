@@ -1,10 +1,25 @@
 ---
 layout: default
 ---
-<h1 class="visually-hidden">{{ site.title }} · 最新文章</h1>
-<nav class="top-cats">
-  {%- for era in site.eras -%}{%- if site.categories[era] %}<a href="{{ '/categories/' | relative_url }}#{{ era }}">{{ era }}</a>{% endif -%}{%- endfor %}
-</nav>
-<ol class="items">
-  {%- for post in site.posts -%}{% include item.html post=post n=forloop.index %}{%- endfor -%}
+<h1 class="visually-hidden">{{ site.title }} · 目录</h1>
+{%- for c in site.data.toc %}
+<h2 class="section-title" id="c{{ c.n }}">{{ c.label }} {{ c.title }}</h2>
+<ol class="items toc">
+  {%- for s in c.sections -%}
+  {%- assign post = site.posts | where: "key", s.key | first -%}
+  <li class="item toc-item">
+    <span class="rank">{{ s.label }}</span>
+    <div class="item-main">
+      {%- if post -%}
+      {%- assign chars = post.content | strip_html | strip_newlines | size -%}
+      <a class="item-title" href="{{ post.url | relative_url }}">{{ s.title }}</a>
+      <div class="meta"><span>约 {{ chars }} 字</span><span>阅读约 {{ chars | divided_by: 400 | plus: 1 }} 分钟</span></div>
+      {%- else -%}
+      <span class="item-title pending">{{ s.title }}</span>
+      <div class="meta"><span>待更新</span></div>
+      {%- endif -%}
+    </div>
+  </li>
+  {%- endfor -%}
 </ol>
+{%- endfor %}

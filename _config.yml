@@ -5,7 +5,9 @@ baseurl: ""
 lang: zh-CN
 timezone: Asia/Shanghai
 permalink: /posts/:title/
-eras: [古代, 中古, 近世, 近代, 现代]
+defaults:
+  - scope: {path: "", type: posts}
+    values: {layout: post}
 plugins:
   - jekyll-feed
   - jekyll-seo-tag

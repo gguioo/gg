@@ -567,3 +567,11 @@ main {
   }
 
   }
+
+/* 目录 */
+.toc-item { grid-template-columns: 3.6em minmax(0, 1fr); padding-block: 7px; }
+.toc-item .rank { text-align: left; font-family: var(--font-body); font-size: 0.85rem; padding-top: 1px; }
+.item-title.pending { color: var(--faint); font-weight: 400; }
+.section-title:first-of-type { margin-top: 22px; }
+.crumb { margin-top: 22px; }
+.crumb + .page-title { margin-top: 6px; }
