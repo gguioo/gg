@@ -4,8 +4,9 @@ var ERAS=[['史前时代','#8a6d3b'],['古代王国','#c0392b'],['伊斯兰与�
 var dark=matchMedia('(prefers-color-scheme: dark)').matches;
 var map=L.map('map',{zoomControl:false,attributionControl:true,worldCopyJump:false}).setView([6,112],4);
 L.control.zoom({position:'topleft'}).addTo(map);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/'+(dark?'dark_all':'rastertiles/voyager')+'/{z}/{x}/{y}{r}.png',
- {subdomains:'abcd',maxZoom:12,attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);
+var E='https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_'+(dark?'Dark':'Light')+'_Gray_';
+L.tileLayer(E+'Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:12,attribution:'Tiles &copy; Esri'}).addTo(map);
+L.tileLayer(E+'Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:12,opacity:.8}).addTo(map);
 var all=[],list=[],era=-1,idx=0,timer=null,layer=L.layerGroup().addTo(map),markers=[];
 var $=function(id){return document.getElementById(id)};
 var sl=$('slider');

@@ -34,3 +34,6 @@ html,body.map-body{height:100%;margin:0;overflow:hidden;background:var(--bg)}
 .leaflet-tooltip.lbl{background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;font-family:var(--font-body);font-size:12px;padding:3px 8px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
 .leaflet-tooltip.lbl::before{display:none}
 @media (max-width:520px){.card .text{font-size:14px}.sheet{padding:10px 12px}}
+.leaflet-bar a{background:var(--bg);color:var(--fg);border-color:var(--line)}
+.leaflet-bar{border:1px solid var(--line)!important;border-radius:12px!important;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.1)!important}
+.leaflet-control-attribution{background:color-mix(in srgb,var(--bg) 70%,transparent)!important;color:var(--faint)}
