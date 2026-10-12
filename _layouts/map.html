@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{%- seo -%}
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12151b" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<link rel="stylesheet" href="{{ '/assets/map.css' | relative_url }}">
+</head>
+<body class="map-body">
+{% include header.html %}
+<div id="map" aria-label="东南亚历史地图"></div>
+<section class="sheet" aria-label="年表控制">
+  <div class="eras" id="eras" role="tablist"></div>
+  <div class="card" id="card">
+    <div class="card-head">
+      <span class="dot" id="c-dot"></span>
+      <span class="year" id="c-year"></span>
+      <span class="place" id="c-place"></span>
+      <span class="count" id="c-count"></span>
+    </div>
+    <p class="text" id="c-text"></p>
+    <a class="read" id="c-link" href="#">读这一节 →</a>
+  </div>
+  <div class="ctrl">
+    <button type="button" id="prev" aria-label="上一条">‹</button>
+    <button type="button" id="play" class="play" aria-label="播放">▶</button>
+    <button type="button" id="next" aria-label="下一条">›</button>
+    <input type="range" id="slider" min="0" max="0" value="0" aria-label="时间轴">
+  </div>
+</section>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>window.MAP_DATA_URL="{{ '/assets/map-events.json' | relative_url }}";window.BASE="{{ '' | relative_url }}";</script>
+<script src="{{ '/assets/map.js' | relative_url }}"></script>
+</body>
+</html>
