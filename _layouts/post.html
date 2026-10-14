@@ -19,6 +19,12 @@ layout: default
   <div class="meta crumb"><a href="{{ '/' | relative_url }}#c{{ chap.n }}">{{ chap.label }} {{ chap.title }}</a></div>
   <h1 class="page-title">{% if sec %}{{ sec.label }} {% endif %}{{ page.title }}</h1>
   <div class="meta post-meta"><span>约 {{ chars }} 字</span><span>阅读约 {{ chars | divided_by: 400 | plus: 1 }} 分钟</span></div>
+  {%- if page.cover -%}
+  <figure class="cover">
+    <img src="{{ '/assets/covers/' | append: page.cover | relative_url }}" alt="{{ page.cover_caption | escape }}" loading="eager" decoding="async">
+    <figcaption>{{ page.cover_caption }}{% if page.cover_credit %}<span class="credit"> · <a href="{{ page.cover_source }}" rel="noopener">{{ page.cover_credit }}</a></span>{% endif %}</figcaption>
+  </figure>
+  {%- endif -%}
   <div class="prose">{{ content }}</div>
   <nav class="pager">
     {%- if prev_key -%}{%- assign pp = site.posts | where: "key", prev_key | first -%}<a href="{{ pp.url | relative_url }}">← {{ pp.title }}</a>{%- else -%}<span></span>{%- endif -%}

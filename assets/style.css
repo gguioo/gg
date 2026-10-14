@@ -613,3 +613,8 @@ main {
 .float-menu .menu { margin-left: 0; }
 .float-menu .glass-btn { width: 44px; height: 44px; }
 .page > main > :first-child, .page > main > .visually-hidden + * { margin-top: 28px; }
+
+.cover { margin: 18px 0 6px; }
+.cover img { display: block; width: 100%; max-height: 420px; object-fit: cover; border-radius: 6px; background: var(--surface); }
+.cover figcaption { margin-top: 8px; font-size: 0.8rem; line-height: 1.6; color: var(--muted); }
+.cover .credit, .cover .credit a { color: var(--muted); opacity: 0.8; text-decoration: none; }
