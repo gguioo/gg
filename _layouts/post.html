@@ -16,6 +16,7 @@ layout: default
   {%- endif -%}
 {%- endfor -%}
 <article class="article">
+  <a hidden id="ny-parent" href="{{ '/' | relative_url }}#c{{ chap.n }}"></a>
   <div class="meta crumb"><a href="{{ '/' | relative_url }}#c{{ chap.n }}">{{ chap.label }} {{ chap.title }}</a></div>
   <h1 class="page-title">{% if sec %}{{ sec.label }} {% endif %}{{ page.title }}</h1>
   <div class="meta post-meta"><span>约 {{ chars }} 字</span><span>阅读约 {{ chars | divided_by: 400 | plus: 1 }} 分钟</span></div>
