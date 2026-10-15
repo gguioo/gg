@@ -19,46 +19,7 @@
   /* System faces only: Google Fonts is blocked in mainland China */
   --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #111317;
-    --surface: #1a1d23;
-    --fg: #e6e8ec;
-    --muted: #a3a9b4;
-    --faint: #6f7682;
-    --line: #262a31;
-    --accent: #93aaf0;
-    --accent-soft: #1f2638;
-    --warn: #e3a172;
-    --warn-soft: #3a2a20;
-    --danger: #ff7b72;
-    --danger-soft: #3b2023;
-    --av-s: 26%;
-    --av-l: 30%;
-    --av-fg: #e6e8ec;
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg: #111317;
-  --surface: #1a1d23;
-  --fg: #e6e8ec;
-  --muted: #a3a9b4;
-  --faint: #6f7682;
-  --line: #262a31;
-  --accent: #93aaf0;
-  --accent-soft: #1f2638;
-  --warn: #e3a172;
-  --warn-soft: #3a2a20;
-  --danger: #ff7b72;
-  --danger-soft: #3b2023;
-  --av-s: 26%;
-  --av-l: 30%;
-  --av-fg: #e6e8ec;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 * {
